@@ -8,6 +8,8 @@ radius = 23.605272
 
 [node name="player" type="CharacterBody2D" unique_id=1777908234]
 position = Vector2(850, 450)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026370666]
@@ -16,3 +18,8 @@ texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=675719224]
 shape = SubResource("CircleShape2D_g2els")
+
+[node name="Muzzle" type="Node2D" parent="." unique_id=1926028112]
+position = Vector2(0, -27)
+
+[connection signal="laser_shot" from="." to="." method="_on_laser_shot"]
