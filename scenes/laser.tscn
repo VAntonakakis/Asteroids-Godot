@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://blnqoj8nucaeg"]
+
+[ext_resource type="Script" uid="uid://bo4ywxwxrm7du" path="res://scenes/scripts/laser.gd" id="1_a7dhc"]
+[ext_resource type="Texture2D" uid="uid://bg2lp5xj7ltet" path="res://assets/texture/laserBlue07.png" id="2_jjj73"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_412cd"]
+radius = 4.0
+height = 38.0
+
+[node name="Laser" type="Area2D" unique_id=1359462045]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_a7dhc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1349821433]
+position = Vector2(0, -19)
+texture = ExtResource("2_jjj73")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1808168139]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_412cd")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=517857837]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

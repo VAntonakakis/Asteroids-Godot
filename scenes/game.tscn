@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://dggkiolmhsvo2"]
 
 [ext_resource type="PackedScene" uid="uid://buni0t0sf615n" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://dasablxj3xhdu" path="res://scenes/scripts/game.gd" id="2_yqjtg"]
 
 [node name="Game" type="Node2D" unique_id=876351302]
+script = ExtResource("2_yqjtg")
 
-[node name="player" parent="." unique_id=1777908234 instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." unique_id=1777908234 instance=ExtResource("1_uwrxv")]
+
+[node name="Lasers" type="Node" parent="." unique_id=2066132286]

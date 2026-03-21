@@ -1,0 +1,13 @@
+extends Area2D
+
+var movement_vector := Vector2(0,-1)
+@export var speed := 500.0 #laser speed
+
+func _physics_process(delta):
+	#rotate the laser based on where the player is looking curently
+	global_position += movement_vector.rotated(rotation) * speed * delta
+	
+	
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	#delete the laser if it is out of screen
+	queue_free()

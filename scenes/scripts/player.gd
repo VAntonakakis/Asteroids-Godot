@@ -1,8 +1,25 @@
 extends CharacterBody2D
 
+signal laser_shot(laser)
+
 @export var acceleration := 10.0           #player acceleration
 @export var max_speed := 300.0             #player max speed
 @export var rotation_speed := 150.0        #player rotation speed
+@onready var muzzle = $Muzzle
+
+var laser_scene = preload("res://scenes/laser.tscn")
+
+var shoot_cd = false  #shoot cooldown
+var rate_of_fire = 0.2 #laser rate of fire
+
+func _process(delta):
+	if Input.is_action_pressed("shoot"): #check if the spacebar is pressed
+		if !shoot_cd:                #check if the shoot cooldown is flase
+			shoot_cd = true          #make shoot cooldown true
+			shoot_laser()            #shoot the laser
+			await get_tree().create_timer(rate_of_fire).timeout #wait for rate of fire seconds
+			shoot_cd = false         #make shoot cooldown false
+		
 
 func _physics_process(delta):
 	var input_vector := Vector2(0, Input.get_axis("move_forward", "move_backward"))
@@ -41,3 +58,10 @@ func _physics_process(delta):
 	#if the player goes outside of the left edge of the screen teleport him at the right edge
 	elif global_position.x > screen_size.x:
 		global_position.x = 0
+
+func shoot_laser():
+	var l = laser_scene.instantiate()
+	l.global_position = muzzle.global_position
+	l.rotation = rotation
+	emit_signal("laser_shot", l)
+	
