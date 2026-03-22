@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blnqoj8nucaeg"]
 
 [ext_resource type="Script" uid="uid://bo4ywxwxrm7du" path="res://scenes/scripts/laser.gd" id="1_a7dhc"]
-[ext_resource type="Texture2D" uid="uid://bg2lp5xj7ltet" path="res://assets/texture/laserBlue07.png" id="2_jjj73"]
+[ext_resource type="Texture2D" uid="uid://dl5y67xtdfxtu" path="res://assets/texture/laserBlue07.png" id="2_jjj73"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_412cd"]
 radius = 4.0
@@ -22,4 +22,5 @@ shape = SubResource("CapsuleShape2D_412cd")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=517857837]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
