@@ -1,6 +1,4 @@
 res://scenes/game.tscn
-res://scenes/asteroid.tscn
 res://scenes/scripts/asteroid.gd
 res://scenes/scripts/game.gd
-res://scenes/scripts/laser.gd
-res://scenes/laser.tscn
+res://scenes/scripts/player.gd
