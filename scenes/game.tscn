@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://buni0t0sf615n" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://dasablxj3xhdu" path="res://scenes/scripts/game.gd" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dmqrlh3n15mcn" path="res://scenes/asteroid.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D" unique_id=876351302]
 script = ExtResource("2_yqjtg")
@@ -9,3 +10,20 @@ script = ExtResource("2_yqjtg")
 [node name="Player" parent="." unique_id=1777908234 instance=ExtResource("1_uwrxv")]
 
 [node name="Lasers" type="Node" parent="." unique_id=2066132286]
+
+[node name="Asteroids" type="Node" parent="." unique_id=1032241179]
+
+[node name="Asteroid" parent="Asteroids" unique_id=141214699 instance=ExtResource("3_lnu2h")]
+position = Vector2(660, 373)
+
+[node name="Asteroid2" parent="Asteroids" unique_id=1094463174 instance=ExtResource("3_lnu2h")]
+position = Vector2(1345, 176)
+
+[node name="Asteroid3" parent="Asteroids" unique_id=1798740962 instance=ExtResource("3_lnu2h")]
+position = Vector2(1369, 629)
+
+[node name="Asteroid4" parent="Asteroids" unique_id=528840471 instance=ExtResource("3_lnu2h")]
+position = Vector2(370, 775)
+
+[node name="Asteroid5" parent="Asteroids" unique_id=1208458290 instance=ExtResource("3_lnu2h")]
+position = Vector2(276, 143)

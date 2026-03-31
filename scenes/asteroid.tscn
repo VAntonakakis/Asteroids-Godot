@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dmqrlh3n15mcn"]
+
+[ext_resource type="Script" uid="uid://cx0ys5lus07ay" path="res://scenes/scripts/asteroid.gd" id="1_6mo6b"]
+[ext_resource type="Texture2D" uid="uid://d36qu2pph03b2" path="res://assets/texture/meteorBrown_big4.png" id="1_akfqu"]
+[ext_resource type="Shape2D" uid="uid://643j16y378nl" path="res://resources/asteroid_cshape_large.tres" id="3_t4se3"]
+
+[node name="Asteroid" type="Area2D" unique_id=141214699]
+collision_layer = 5
+collision_mask = 11
+script = ExtResource("1_6mo6b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=618433067]
+physics_interpolation_mode = 2
+texture = ExtResource("1_akfqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=787943682]
+shape = ExtResource("3_t4se3")

@@ -1,3 +1,4 @@
+# Player.gd
 extends CharacterBody2D
 
 signal laser_shot(laser)
@@ -60,8 +61,11 @@ func _physics_process(delta):
 		global_position.x = 0
 
 func shoot_laser():
+	#create a new laser instance
 	var l = laser_scene.instantiate()
+	#set the laser position to the muzzle position
 	l.global_position = muzzle.global_position
+	#set the laser rotation based on the player rotation
 	l.rotation = rotation
+	#emit the laser_shot signal and send the laser instance
 	emit_signal("laser_shot", l)
-	
