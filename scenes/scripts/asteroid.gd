@@ -30,7 +30,7 @@ func _ready():
 			speed = randf_range(100,200)
 			sprite.texture = preload("res://assets/texture/meteorBrown_tiny1.png")
 			cshape.set_deferred("shape",preload("res://resources/asteroid_cshape_small.tres"))
-	print(speed)
+	#print(speed)
 	
 func _physics_process(delta):
 	#move the asteroid based on its rotation and speed
@@ -59,3 +59,9 @@ func explode():
 	emit_signal("exploded", global_position, size)
 	#delete the asteroid after exploding
 	queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		var player = body
+		player.die()
