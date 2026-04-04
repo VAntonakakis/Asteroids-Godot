@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c7xykimcucu6t"]
+
+[ext_resource type="Script" uid="uid://c74fs7vwdr83f" path="res://scenes/scripts/hud.gd" id="1_ahhtf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oo0fn"]
+font_size = 50
+
+[node name="hud" type="Control" unique_id=1936738171]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ahhtf")
+
+[node name="Score" type="Label" parent="." unique_id=2026978128]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 18.0
+offset_right = 360.0
+offset_bottom = 87.0
+text = "SCORE: 9999"
+label_settings = SubResource("LabelSettings_oo0fn")
+
+[node name="Lives" type="HBoxContainer" parent="." unique_id=303273479]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 87.0
+offset_right = 91.0
+offset_bottom = 127.0
+
+[node name="Wave" type="Label" parent="." unique_id=1462854555]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SlowMotionBar" type="ProgressBar" parent="." unique_id=782267079]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 159.0
+offset_right = 152.0
+offset_bottom = 299.0
+theme_override_colors/font_color = Color(0.9490196, 1, 0.9490196, 1)
+value = 100.0
+fill_mode = 3

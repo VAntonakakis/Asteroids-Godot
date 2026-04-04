@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://carps78dm82lr"]
+
+[ext_resource type="Script" uid="uid://fbcirs2yy70b" path="res://scenes/scripts/pause_menu.gd" id="1_n87rw"]
+
+[node name="PauseMenu" type="Control" unique_id=336304876]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n87rw")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2137370373]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.003921569)
+
+[node name="Title" type="Label" parent="." unique_id=1236823684]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_right = 31.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "PAUSED"
+
+[node name="ResumeButton" type="Button" parent="." unique_id=123430856]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.5
+offset_top = -35.5
+offset_right = 93.5
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "RESUME"
+
+[node name="RestartButton" type="Button" parent="." unique_id=1264843538]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.753
+anchor_right = 0.5
+anchor_bottom = 0.753
+offset_left = -98.0
+offset_top = -135.70001
+offset_right = 98.0
+offset_bottom = -64.70001
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "RESTART"
+
+[node name="MainMenuButton" type="Button" parent="." unique_id=562913662]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.611
+anchor_right = 0.5
+anchor_bottom = 0.611
+offset_left = -137.0
+offset_top = -245.90002
+offset_right = 138.0
+offset_bottom = -174.90002
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "MAIN MENU"
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]

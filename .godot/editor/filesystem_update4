@@ -1,4 +1,7 @@
+res://scenes/scripts/main_menu.gd
+res://scenes/main_menu.tscn
 res://scenes/game.tscn
-res://scenes/scripts/asteroid.gd
 res://scenes/scripts/game.gd
-res://scenes/scripts/player.gd
+res://scenes/pause_menu.tscn
+res://scenes/scripts/pause_menu.gd
+res://scenes/hud.tscn
