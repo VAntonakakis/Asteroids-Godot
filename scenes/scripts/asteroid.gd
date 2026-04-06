@@ -7,7 +7,9 @@ var movement_vector := Vector2(0,-1)
 enum AsteroidSize{LARGE,MEDIUM,SMALL}
 @export var size := AsteroidSize.LARGE 
 
-var speed := 200 	
+var speed := 200
+var current_speed := 200 #current asteroid speed
+var slow_motion_multiplier := 0.35 #how much slower the asteroid moves during slow motion
 
 @onready var sprite = $Sprite2D	
 @onready var cshape = $CollisionShape2D
@@ -30,11 +32,13 @@ func _ready():
 			speed = randf_range(100,200)
 			sprite.texture = preload("res://assets/texture/meteorBrown_tiny1.png")
 			cshape.set_deferred("shape",preload("res://resources/asteroid_cshape_small.tres"))
-	#print(speed)
+	print("Asteroid created at: ", global_position, " size: ", size)
+	#set the current speed to the default asteroid speed
+	current_speed = speed
 	
 func _physics_process(delta):
 	#move the asteroid based on its rotation and speed
-	global_position += movement_vector.rotated(rotation) * speed * delta
+	global_position += movement_vector.rotated(rotation) * current_speed * delta
 	
 	#get asteroid radius from collision shape
 	var radius = cshape.shape.radius
@@ -65,3 +69,10 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var player = body
 		player.die()
+
+func set_slow_motion(active):
+	#slow down the asteroid when slow motion is active
+	if active:
+		current_speed = speed * slow_motion_multiplier
+	else:
+		current_speed = speed
