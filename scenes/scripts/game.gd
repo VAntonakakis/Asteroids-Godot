@@ -8,6 +8,7 @@ extends Node
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var player_spawn_area = $PlayerSpawnPos/PlayerSpawnArea
 @onready var pause_menu = $UI/PauseMenu
+@onready var game_music = $GameMusic
 
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
 var current_wave := 1 #current wave number
@@ -54,8 +55,11 @@ func _process(delta):
 			get_tree().paused = false
 			pause_menu.visible = false
 		else:
-			get_tree().paused = true
+			#up the music volume when the game is paused
+			game_music.volume_db = 0
 			pause_menu.visible = true
+			get_tree().paused = true
+
 	#if the reset key is pressed reload the current scene
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
@@ -161,11 +165,14 @@ func check_wave_clear():
 			print("Remaining asteroid -> position: ", a.global_position, " size: ", a.size)
 	
 	#if there are no asteroids left and a wave is active start the next wave
-	if asteroids.get_child_count() <= 1 and wave_in_progress:
+	if asteroids.get_child_count() <= 2 and wave_in_progress:
 		print("WAVE CLEARED")
 		wave_in_progress = false
+		#increase the number of asteroids based on the current wave
+		asteroids_per_wave += current_wave
+		
+		#move to the next wave
 		current_wave += 1
-		asteroids_per_wave += 1
 		
 		#small delay before the next wave starts
 		await get_tree().create_timer(1.5).timeout

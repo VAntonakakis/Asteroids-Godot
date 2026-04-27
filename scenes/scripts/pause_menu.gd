@@ -1,5 +1,7 @@
 extends Control
 
+@onready var game_music = $"../../GameMusic"
+
 func _ready() -> void:
 	#hide the pause menu when the scene starts
 	visible = false
@@ -8,6 +10,9 @@ func _on_resume_button_pressed() -> void:
 	#resume the game after the button is pressed
 	get_tree().paused = false
 	visible = false
+	
+	#restore the game music volume when the game is resumed
+	game_music.volume_db = -5
 
 func _on_restart_button_pressed() -> void:
 	#restart the game after the button is pressed

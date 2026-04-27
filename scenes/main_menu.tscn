@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bpd8t8v7hb7j4"]
 
 [ext_resource type="Script" uid="uid://bnp3l1u1cea5s" path="res://scenes/scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://bvob3icbqiboi" path="res://assets/audio/ThemeSong.wav" id="2_ekxnf"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l6cm7"]
 particle_flag_disable_z = true
@@ -110,6 +111,10 @@ amount = 35
 lifetime = 200.0
 preprocess = 280.0
 process_material = SubResource("ParticleProcessMaterial_bqqt6")
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="." unique_id=321431858]
+stream = ExtResource("2_ekxnf")
+autoplay = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
