@@ -2,6 +2,34 @@
 
 [ext_resource type="Script" uid="uid://bnp3l1u1cea5s" path="res://scenes/scripts/main_menu.gd" id="1_l6cm7"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l6cm7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 470, 1)
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ekxnf"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 470, 1)
+initial_velocity_min = -20.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bqqt6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 470, 1)
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+
 [node name="MainMenu" type="Control" unique_id=340084820]
 layout_mode = 3
 anchors_preset = 15
@@ -56,6 +84,32 @@ theme_override_font_sizes/font_size = 45
 text = "W / A / S / D to move
 Space to shoot
 Shift for slow motion"
+
+[node name="BackgroundStarFields" type="Node2D" parent="." unique_id=2077732427]
+
+[node name="StarFieldBack" type="GPUParticles2D" parent="BackgroundStarFields" unique_id=1474853053]
+z_index = -100
+position = Vector2(1721, 422)
+amount = 1000
+lifetime = 200.0
+preprocess = 280.0
+process_material = SubResource("ParticleProcessMaterial_l6cm7")
+
+[node name="StarFieldMiddle" type="GPUParticles2D" parent="BackgroundStarFields" unique_id=1010406789]
+z_index = -95
+position = Vector2(1721, 422)
+amount = 250
+lifetime = 200.0
+preprocess = 280.0
+process_material = SubResource("ParticleProcessMaterial_ekxnf")
+
+[node name="StarFieldFront" type="GPUParticles2D" parent="BackgroundStarFields" unique_id=1694283379]
+z_index = -90
+position = Vector2(1721, 422)
+amount = 35
+lifetime = 200.0
+preprocess = 280.0
+process_material = SubResource("ParticleProcessMaterial_bqqt6")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

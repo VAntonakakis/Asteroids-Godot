@@ -11,6 +11,34 @@
 [ext_resource type="AudioStream" uid="uid://doo2mr6353bo6" path="res://assets/audio/impactMetal_004.wav" id="8_gee14"]
 [ext_resource type="AudioStream" uid="uid://c4ofbq4ropyri" path="res://assets/audio/sfx_lose.wav" id="9_0tnpc"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vtaks"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 470, 1)
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kvpfn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 470, 1)
+initial_velocity_min = -20.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dinhu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 470, 1)
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+
 [node name="Game" type="Node2D" unique_id=876351302]
 script = ExtResource("2_yqjtg")
 
@@ -29,6 +57,32 @@ offset_bottom = 40.0
 script = ExtResource("4_0tnpc")
 
 [node name="PauseMenu" parent="UI" unique_id=336304876 instance=ExtResource("5_vtaks")]
+
+[node name="BackgroundStarFields" type="Node2D" parent="." unique_id=2142664623]
+
+[node name="StarFieldBack" type="GPUParticles2D" parent="BackgroundStarFields" unique_id=318791913]
+z_index = -100
+position = Vector2(1721, 422)
+amount = 1000
+lifetime = 200.0
+preprocess = 280.0
+process_material = SubResource("ParticleProcessMaterial_vtaks")
+
+[node name="StarFieldMiddle" type="GPUParticles2D" parent="BackgroundStarFields" unique_id=991945713]
+z_index = -95
+position = Vector2(1721, 422)
+amount = 250
+lifetime = 200.0
+preprocess = 280.0
+process_material = SubResource("ParticleProcessMaterial_kvpfn")
+
+[node name="StarFieldFront" type="GPUParticles2D" parent="BackgroundStarFields" unique_id=282288562]
+z_index = -90
+position = Vector2(1721, 422)
+amount = 35
+lifetime = 200.0
+preprocess = 280.0
+process_material = SubResource("ParticleProcessMaterial_dinhu")
 
 [node name="Player" parent="." unique_id=1777908234 instance=ExtResource("1_uwrxv")]
 
