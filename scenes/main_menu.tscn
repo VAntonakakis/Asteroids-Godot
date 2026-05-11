@@ -42,9 +42,9 @@ script = ExtResource("1_l6cm7")
 
 [node name="StartButton" type="Button" parent="." unique_id=1483643959]
 layout_mode = 1
-offset_left = 667.0
+offset_left = 663.0
 offset_top = 290.0
-offset_right = 950.0
+offset_right = 946.0
 offset_bottom = 361.0
 theme_override_font_sizes/font_size = 45
 text = "START GAME"
