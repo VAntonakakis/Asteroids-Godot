@@ -32,7 +32,6 @@ func _ready():
 			speed = randf_range(100,200)
 			sprite.texture = preload("res://assets/texture/meteorBrown_tiny1.png")
 			cshape.set_deferred("shape",preload("res://resources/asteroid_cshape_small.tres"))
-	print("Asteroid created at: ", global_position, " size: ", size)
 	#set the current speed to the default asteroid speed
 	current_speed = speed
 	

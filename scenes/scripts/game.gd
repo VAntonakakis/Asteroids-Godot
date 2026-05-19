@@ -54,6 +54,7 @@ func _process(delta):
 		if get_tree().paused:
 			get_tree().paused = false
 			pause_menu.visible = false
+			game_music.volume_db = -5
 		else:
 			#up the music volume when the game is paused
 			game_music.volume_db = 0
@@ -96,7 +97,6 @@ func _on_asteroid_exploded(pos, size):
 			#small asteroids do not split further
 			pass
 
-	print("Asteroid exploded. Remaining now: ", asteroids.get_child_count())
 	call_deferred("check_wave_clear")
 
 func spawn_asteroid(pos, size):
@@ -129,9 +129,6 @@ func spawn_asteroid_random(size):
 		#if the asteroid is far enough from the player stop the loop
 		if spawn_position.distance_to(player.global_position) > 200:
 			break
-	
-	print("Spawned asteroid at: ", spawn_position)
-	
 	#set the asteroid position
 	a.global_position = spawn_position
 	#set the asteroid size
@@ -146,7 +143,6 @@ func spawn_asteroid_random(size):
 func start_wave():
 	#set the wave as active
 	wave_in_progress = true
-	print("Starting wave: ", current_wave, " with ", asteroids_per_wave, " asteroids")
 	
 	#spawn large asteroids for the current wave
 	for i in range(asteroids_per_wave):
@@ -157,16 +153,8 @@ func start_wave():
 		hud.update_wave(current_wave)
 
 func check_wave_clear():
-	print("Checking wave clear. Asteroids count: ", asteroids.get_child_count())
-	
-	#if there are 1 to 3 asteroids left print their position and size for debugging
-	if asteroids.get_child_count() > 0 and asteroids.get_child_count() <= 3:
-		for a in asteroids.get_children():
-			print("Remaining asteroid -> position: ", a.global_position, " size: ", a.size)
-	
-	#if there are no asteroids left and a wave is active start the next wave
+	# Start the next wave when the current wave is almost cleared.
 	if asteroids.get_child_count() <= 2 and wave_in_progress:
-		print("WAVE CLEARED")
 		wave_in_progress = false
 		#increase the number of asteroids based on the current wave
 		asteroids_per_wave += current_wave
